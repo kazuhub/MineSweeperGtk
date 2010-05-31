@@ -1,7 +1,8 @@
-# ƒ}ƒCƒ“ƒXƒC[ƒp
-# c‰¡‚Ì˜g”‚Æ”š’e”‚©‚ç–â‘è‚ğì¬B
-# ms = MineSweeper.new(8 /* c */, 8 /* ‰¡ */, 10)
-# ƒŒƒxƒ‹‚É‚æ‚Á‚Ä”š’e‚Ì”‚ª•Ï‚í‚éB(‰‹‰A’†‹‰Aã‹‰)
+# config:utf-8
+# ãƒã‚¤ãƒ³ã‚¹ã‚¤ãƒ¼ãƒ‘
+# ç¸¦æ¨ªã®æ æ•°ã¨çˆ†å¼¾æ•°ã‹ã‚‰å•é¡Œã‚’ä½œæˆã€‚
+# ms = MineSweeper.new(8 /* ç¸¦ */, 8 /* æ¨ª */, 10)
+# ãƒ¬ãƒ™ãƒ«ã«ã‚ˆã£ã¦çˆ†å¼¾ã®æ•°ãŒå¤‰ã‚ã‚‹ã€‚(åˆç´šã€ä¸­ç´šã€ä¸Šç´š)
 class MineSweeper
 
   LEVEL_EASY = 0.1
@@ -30,11 +31,11 @@ class MineSweeper
     @x * @y
   end
 
-  # ƒGƒŠƒA‚ğŠJ‚­
-  # ˆø”Fx => c, y => ‰¡
-  # –ß‚è’lFü•Ó‚Ì”š’e”B”š’e‚Ìê‡‚Ífalse
+  # ã‚¨ãƒªã‚¢ã‚’é–‹ã
+  # å¼•æ•°ï¼šx => ç¸¦, y => æ¨ª
+  # æˆ»ã‚Šå€¤ï¼šå‘¨è¾ºã®çˆ†å¼¾æ•°ã€‚çˆ†å¼¾ã®å ´åˆã¯false
   def open(x, y)
-    # ”ÍˆÍŠO
+    # ç¯„å›²å¤–
     return nil unless inner_area?(x, y)	  
     a = self[x, y]
     return nil unless a
@@ -45,7 +46,7 @@ class MineSweeper
       if a.mine?
         @miss = true
       else
-        # ƒGƒŠƒA‚ğŠJ‚¢‚½Œ”ƒCƒ“ƒNƒŠƒƒ“ƒg
+        # ã‚¨ãƒªã‚¢ã‚’é–‹ã„ãŸä»¶æ•°ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆ
         @open_cnt += 1
       end
     end
@@ -57,24 +58,24 @@ class MineSweeper
     end
   end
 
-  # ƒQ[ƒ€ƒNƒŠƒA‚µ‚½‚©‚Ç‚¤‚©B
-  # (”š’eˆÈŠO‚Ì‚·‚×‚Ä‚ÌƒGƒŠƒA‚ğ‚Ğ‚ç‚¢‚Ä‚¢‚é‚©)
+  # ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢ã—ãŸã‹ã©ã†ã‹ã€‚
+  # (çˆ†å¼¾ä»¥å¤–ã®ã™ã¹ã¦ã®ã‚¨ãƒªã‚¢ã‚’ã²ã‚‰ã„ã¦ã„ã‚‹ã‹)
   def complete?
     if @miss
       false
     else
-      # ‘SƒGƒŠƒA - ”š’e” == ŠJ‚¢‚½Œ”
+      # å…¨ã‚¨ãƒªã‚¢ - çˆ†å¼¾æ•° == é–‹ã„ãŸä»¶æ•°
       (areas - @mines) == @open_cnt
     end
   end
 
-  # ‰Šúó‘Ô‚É–ß‚·
-  # ˆê‚Â‚ÌƒGƒŠƒA‚àƒI[ƒvƒ“‚µ‚Ä‚¢‚È‚¢ó‘Ô
+  # åˆæœŸçŠ¶æ…‹ã«æˆ»ã™
+  # ä¸€ã¤ã®ã‚¨ãƒªã‚¢ã‚‚ã‚ªãƒ¼ãƒ—ãƒ³ã—ã¦ã„ãªã„çŠ¶æ…‹
   def clear
     @open_cnt = 0
     @miss = false
 	
-    # ƒGƒŠƒA‚ÌƒNƒŠƒA
+    # ã‚¨ãƒªã‚¢ã®ã‚¯ãƒªã‚¢
     @board.each do |x|
       x.each do |y|
         y.clear
@@ -84,7 +85,7 @@ class MineSweeper
     self
   end
 
-  # Œ»İ‚Ìƒ{[ƒh‚Ìó‘Ô‚ğ•¶š—ñ‚Å•\¦
+  # ç¾åœ¨ã®ãƒœãƒ¼ãƒ‰ã®çŠ¶æ…‹ã‚’æ–‡å­—åˆ—ã§è¡¨ç¤º
   def show
     @board.each do |x|
       x.each do |y|
@@ -104,12 +105,12 @@ class MineSweeper
     @board[x][y]
   end
  
-  # ƒGƒŠƒA“à‚©?
+  # ã‚¨ãƒªã‚¢å†…ã‹?
   def inner_area?(x, y)
     0 <= x && x < @x && 0 <= y && y < @y 
   end
 
-  # ƒfƒtƒHƒ‹ƒg‚Ì”š’e”
+  # ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®çˆ†å¼¾æ•°
   def default_mine(level = LEVEL_NORMAL)
     per = case level 
 	  when LEVEL_EASY, LEVEL_NORMAL, LEVEL_HARD
@@ -121,7 +122,7 @@ class MineSweeper
     m == 0 ? 1 : m
   end
 
-  # ƒ{[ƒh‚É”š’e‚ğƒ‰ƒ“ƒ_ƒ€‚ÉƒZƒbƒg
+  # ãƒœãƒ¼ãƒ‰ã«çˆ†å¼¾ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«ã‚»ãƒƒãƒˆ
   def set_mine
     count = 0
     while(@mines > count) 
@@ -133,7 +134,7 @@ class MineSweeper
     end
   end
   
-  # üˆÍ‚Ì”š’e”‚ğŒvZ‚µƒZƒbƒg
+  # å‘¨å›²ã®çˆ†å¼¾æ•°ã‚’è¨ˆç®—ã—ã‚»ãƒƒãƒˆ
   def set_next_mine
     @board.each_with_index do |x, i|
       x.each_with_index do |y, j|
@@ -142,8 +143,8 @@ class MineSweeper
     end
   end
 
-  # ‚ ‚éƒGƒŠƒA‚ÌüˆÍ‚Ì”š’e”ŒvZ
-  # ‘O’ñF”š’eİ’uÏ
+  # ã‚ã‚‹ã‚¨ãƒªã‚¢ã®å‘¨å›²ã®çˆ†å¼¾æ•°è¨ˆç®—
+  # å‰æï¼šçˆ†å¼¾è¨­ç½®æ¸ˆ
   def next_mine x, y
     count = 0
     (x - 1..x + 1).each do |ex|
@@ -173,13 +174,13 @@ class MineSweeper
       @open
     end
 
-    # —×Ú‚·‚é”š’e”
+    # éš£æ¥ã™ã‚‹çˆ†å¼¾æ•°
     def open
       @open = true
       @next_mine
     end
 
-    # ‰Šúó‘Ô‚É–ß‚·
+    # åˆæœŸçŠ¶æ…‹ã«æˆ»ã™
     def clear
       @open = false
     end
